@@ -75,9 +75,9 @@ python main.py --phase jailbreak
 If you find this repository useful for your research, please consider citing the following paper:
 
 ```bibtex
-@misc{wei2025wolfsheepsclothingbypassing,
-      title={A Wolf in Sheep's Clothing: Bypassing Commercial LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search}, 
-      author={Rongzhe Wei and Peizhi Niu and Xinjie Shen and Tony Tu and Yifan Li and Ruihan Wu and Eli Chien and Olgica Milenkovic and Pan Li},
+@misc{wei2025trojan,
+      title={The Trojan Knowledge: Bypassing Commercial LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search}, 
+      author={Rongzhe Wei and Peizhi Niu and Xinjie Shen and Tony Tu and Yifan Li and Ruihan Wu and Eli Chien and Pin-Yu Chen and Olgica Milenkovic and Pan Li},
       year={2025},
       eprint={2512.01353},
       archivePrefix={arXiv},
