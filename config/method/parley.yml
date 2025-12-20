@@ -1,0 +1,115 @@
+# Parley (TAP - Tree of Attacks) Configuration
+# Paper: "Tree of Attacks: Jailbreaking Black-Box LLMs with Pruning"
+
+experiment:
+  seed: 42
+  enable_wandb: false
+
+# Attacker model - generates adversarial prompts (whitebox like other baselines)
+attacker_model:
+  # type: whitebox | blackbox
+  type: whitebox
+  
+  whitebox:
+    name: "huihui-ai/Qwen3-32B-abliterated"
+    device_map: "auto"
+    max_new_tokens: 4096
+    max_model_len: 8192
+    temperature: 1.0
+    top_p: 1.0
+    input_max_length: 8192
+    use_vllm: true
+    enable_thinking: true
+    remove_thinking: true
+    hf_token: null  # HF Token
+
+    vllm_kwargs:
+      tensor_parallel_size: 1
+      trust_remote_code: true
+      gpu_memory_utilization: 0.9
+      max_model_len: 8192
+      enforce_eager: false
+      disable_custom_all_reduce: true
+      disable_log_stats: true
+    
+  blackbox:
+    provider: "gemini"
+    name: "gemini-2.5-flash"
+    api_key: null
+    use_proxy: false
+    proxy_api_key: null
+    max_tokens: 1024
+    temperature: 1.0
+    top_p: 1.0
+    # Rate limiting configuration
+    rate_limit_backoff_base: 1.0
+    rate_limit_backoff_max: 60.0
+    rate_limit_jitter: 0.2
+
+# Evaluator model - scores responses and checks on-topic (blackbox Gemini like judge in other baselines)
+evaluator_model:
+  # type: whitebox | blackbox
+  type: blackbox
+  
+  whitebox:
+    name: "huihui-ai/Qwen3-32B-abliterated"
+    device_map: "auto"
+    max_new_tokens: 100
+    max_model_len: 4096
+    temperature: 0.0
+    top_p: 0.1
+    use_vllm: true
+    enable_thinking: false
+    remove_thinking: true
+    hf_token: null  # HF Token
+    
+    vllm_kwargs:
+      tensor_parallel_size: 1
+      trust_remote_code: true
+      gpu_memory_utilization: 0.9
+      max_model_len: 4096
+      enforce_eager: false
+      disable_custom_all_reduce: true
+      disable_log_stats: true
+    
+  blackbox:
+    provider: "gemini"
+    name: "gemini-2.5-flash"
+    api_key: null
+    use_proxy: false
+    proxy_api_key: null
+    max_tokens: 512
+    temperature: 0.0
+    top_p: 0.9
+    # Rate limiting configuration (same as judge_model in other baselines)
+    max_retries: -1
+    rate_limit_backoff_base: 1.0
+    rate_limit_backoff_max: 60.0
+    rate_limit_jitter: 0.2
+
+# Tree of Attacks runtime parameters
+runtime:
+  root_nodes: 2           # Number of initial attack seeds
+  branching_factor: 2     # Number of children per node
+  width: 3                # Maximum nodes to keep at each level
+  depth: 3                # Maximum tree depth
+  stop_score: 8           # Stop early if score >= this value
+  
+  # Target model generation parameters (if using framework target)
+  target_temp: 0.3
+  target_top_p: 1.0
+  target_max_tokens: 1024
+  
+  # Attacker model generation parameters
+  attacker_temp: 1.0
+  attacker_top_p: 1.0
+  attacker_max_tokens: 4096
+  
+  # Evaluator model generation parameters
+  evaluator_temp: 0.0
+  evaluator_top_p: 0.9
+  evaluator_max_tokens: 512
+  
+  # Logging and debugging
+  log_level: "INFO"
+  save_intermediate: true

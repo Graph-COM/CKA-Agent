@@ -175,6 +175,7 @@ evaluation:
 # =========================
 methods:
   baselines:
+    # - "parley"          # Parley (TAP - Tree of Attacks) jailbreak method
     - "cka-agent"       # CKA-Agent method for correlated knowledge jailbreak
     # - "actor_attack"   # Actor Attack (multi-turn role-playing jailbreak)
     #- "pap"            # pap (Persuasive Adversarial Prompt) method

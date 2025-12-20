@@ -964,6 +964,17 @@ class JailbreakExperiment:
             ).get("name"):
                 # Blackbox doesn't need GPU allocation
                 pass
+        elif method_name == "parley":
+            # Parley uses attacker_model (not attack_model)
+            attacker_config = actual_config.get("attacker_model", {})
+            if attacker_config.get("type") == "whitebox" and attacker_config.get(
+                "whitebox", {}
+            ).get("name"):
+                needs_controller = True
+                controller_model = attacker_config["whitebox"]["name"]
+            elif attacker_config.get("type") == "blackbox":
+                # Blackbox doesn't need GPU allocation
+                pass
 
         elif method_name in ["vanilla", "autodan"]:
             # These methods don't need GPU allocation

@@ -14,6 +14,7 @@ from methods.baseline.multi_agent_jailbreak import MultiAgentJailbreakMethod
 from methods.baseline.agent_self_response import AgentSelfResponseMethod
 from methods.baseline.actor_attack.actor_attack import ActorAttack
 from methods.baseline.x_teaming_method import XTeamingMethod
+from methods.baseline.parley_method import ParleyMethod
 
 
 def create_method(method_name: str, config=None, model=None):
@@ -50,6 +51,8 @@ def create_method(method_name: str, config=None, model=None):
         return ActorAttack(name=method_name, config=config, model=model)
     if method_name == "x_teaming":
         return XTeamingMethod(name=method_name, config=config, model=model)
+    if method_name == "parley" or method_name == "tap":
+        return ParleyMethod(name=method_name, config=config, model=model)
     raise ValueError(
         f"Unsupported method: {method_name}. "
         f"Supported methods: {supported_methods()}"
@@ -67,6 +70,8 @@ def supported_methods():
         "agent_self_response",
         "actor_attack",
         "x_teaming",
+        "parley",
+        "tap",
     ]  # Available methods
 
 
