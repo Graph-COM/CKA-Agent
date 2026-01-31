@@ -167,10 +167,13 @@ class XTeamingJudge:
 
                 if not self.api_key:
                     raise ValueError("Gemini api_key is required for official mode")
-                base_url = "https://xinjieshen-gemini-prox-40.deno.dev/"
-                self.client = genai.Client(
-                    api_key=self.api_key, http_options={"base_url": base_url}
-                )
+                if self.base_url:
+                    self.client = genai.Client(
+                        api_key=self.api_key,
+                        http_options={"base_url": self.base_url},
+                    )
+                else:
+                    self.client = genai.Client(api_key=self.api_key)
         else:
             raise ValueError(f"Unsupported provider: {self.provider}")
 
