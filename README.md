@@ -1,4 +1,4 @@
-# CKA-Agent: Bypassing LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search
+# [ICML 2026] CKA-Agent: Bypassing LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search
 
 <a href="https://arxiv.org/abs/2512.01353" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-CKA_Agent-red?logo=arxiv&style=for-the-badge" />
@@ -135,13 +135,11 @@ python main.py --phase jailbreak
 If you find this repository useful for your research, please consider citing the following paper:
 
 ```bibtex
-@misc{wei2025trojan,
+@inproceedings{wei2025trojan,
       title={The Trojan Knowledge: Bypassing Commercial LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search}, 
       author={Rongzhe Wei and Peizhi Niu and Xinjie Shen and Tony Tu and Yifan Li and Ruihan Wu and Eli Chien and Pin-Yu Chen and Olgica Milenkovic and Pan Li},
-      year={2025},
-      eprint={2512.01353},
-      archivePrefix={arXiv},
-      primaryClass={cs.CR},
-      url={https://arxiv.org/abs/2512.01353}, 
+    booktitle={Forty-third International Conference on Machine Learning},
+    year={2026},
+    url={https://openreview.net/forum?id=IlJeOnKW0K}
 }
 ```
