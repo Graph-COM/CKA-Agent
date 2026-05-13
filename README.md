@@ -16,6 +16,9 @@
     <img alt="Python" src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge" />
 </a>
 
+## Defense towards CKA
+
+[TurnGate](https://github.com/Graph-COM/TurnGate) is a response-aware defense mechanism designed to detect and mitigate hidden malicious intent in multi-turn dialogue systems. Defending state-of-the-art multi-turn malicious attacks like CKA-Agent, achieving great defense performance while avoiding overrefusal.
 
 ## 🔥 Latest Results on Frontier Models (Dec 2025)
 
