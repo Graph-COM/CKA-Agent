@@ -1,4 +1,4 @@
-# [ICML 2026] CKA-Agent: Bypassing LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search
+# [ICML 2026 & ICLR 2026 AIWILD] CKA-Agent: Bypassing LLM Guardrails via Harmless Prompt Weaving and Adaptive Tree Search
 
 <a href="https://arxiv.org/abs/2512.01353" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-CKA_Agent-red?logo=arxiv&style=for-the-badge" />
